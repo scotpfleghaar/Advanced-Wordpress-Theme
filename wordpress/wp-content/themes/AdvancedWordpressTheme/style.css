@@ -266,3 +266,13 @@ body>div.container.content>div.main.block>article>nav>ul>li>ul {
 .clr {
     clear: both;
 }
+
+.side-widget {
+    margin-bottom: 20px;
+}
+
+.side-widget li {
+    list-style: none;
+    line-height: 1.8em;
+    border-bottom: 1px dotted #ccc;
+}

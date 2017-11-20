@@ -35,16 +35,10 @@
             <?php endif; ?>
         </div>
         <div class="side">
-            <div class="block">
-                <h3>Sidebar head</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent convallis tristique vulputate. Proin tristique
-                    elementum est, quis aliquam diam blandit vel. Duis id efficitur enim, ultrices suscipit leo. Aenean et
-                    fringilla sapien, eget porta magna. Aliquam eu leo ex. Nunc efficitur dolor tempor arcu ultrices, in
-                    sodales eros pellentesque. Etiam laoreet nisl eget libero varius fringilla in nec eros. Nunc at ex vel
-                    metus consequat imperdiet. Vestibulum lacinia risus id lorem lacinia, at lacinia nulla scelerisque. Maecenas
-                    vitae dapibus eros.</p>
-                <a class="button" href="#">Read More</a>
-            </div>
-        </div>
+        <?php if(is_active_sidebar('sidebar')) :?>
+            <?php dynamic_sidebar('sidebar')?>
+        <?php endif; ?>
+    </div>
+        
     </div>
     <?php get_footer();?>
