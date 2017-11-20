@@ -25,9 +25,14 @@
                         <?php the_content();?>
                     </article>
                 <?php endwhile; ?>
+                
             <?php else : ?>
                 <?php echo wpautop('Sorry, no posts where found')?>
             <?php endif; ?>
+
+          
+
+
         </div>
         <div class="side">
             <?php if(is_active_sidebar('sidebar')) :?>
