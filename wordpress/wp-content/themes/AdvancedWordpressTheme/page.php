@@ -5,30 +5,25 @@
 
     <div class="container content">
         <div class="main block">
-            <h1 class="page-header">
-        <?php
-		        if(is_category()){
-		          single_cat_title();
-		        } else if(is_author()){
-		          the_post();
-		          echo 'Archives By Author: ' .get_the_author();
-		          rewind_posts();
-		        } else if(is_tag()){
-		          single_tag_title();
-		        } else if(is_day()){
-		          echo 'Archives By Day: ' .get_the_date();
-		        } else if(is_month()){
-		          echo 'Archives By Month: ' .get_the_date('F Y');
-		        } else if(is_year()){
-		          echo 'Archives By Year: ' .get_the_date('Y');
-		        } else {
-		          echo 'Archives';
-		        }
-              ?>
-              </h1>
             <?php if(have_posts()) : ?>
                 <?php while(have_posts()) : the_post(); ?>
-                <?php get_template_part('content', get_post_format());?>
+                    <article class="page">
+                        <?php if(page_is_parent() || $post->post_parent > 0 ) :?>
+                            <nav class="nav sub-nav">
+                            <ul>
+                                <span class='parent-link'><a href="<?php echo get_the_permalink(get_top_parent());?>"><?php echo get_the_title(get_top_parent());?></a></span>
+                            <?php $args=array(
+                                'child_of' => get_top_parent(),
+                                'title' => ''
+                            )?>
+                            <?php wp_list_pages($args);?>
+                            </ul>
+                            </nav>
+                            <div class="clr"></div>
+                        <?php endif ?>
+                        <h2><?php the_title();?></h2>
+                        <?php the_content();?>
+                    </article>
                 <?php endwhile; ?>
             <?php else : ?>
                 <?php echo wpautop('Sorry, no posts where found')?>
